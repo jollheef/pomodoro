@@ -50,11 +50,11 @@ begin
 -- Alert if 4600+ for work and 1500+ for relax
 process (clk, rst, cntthird, cntlast)
 begin
-	if (rst = '0' or silent = '1') then
+	if (rst = '0' or silent = '0') then
 		bell_tmp <= '1';
 	elsif rising_edge(clk) then
-		if ((relax = '0' and cntlast = "0100" and cntthird = "0110") or
-		    (relax = '1' and cntlast = "0001" and cntthird = "0101")) then
+		if ((relax = '1' and cntlast = "0100" and cntthird = "0110") or
+		    (relax = '0' and cntlast = "0001" and cntthird = "0101")) then
 			bell_tmp <= not bell_tmp;
 		else
 			bell_tmp <= '1';
