@@ -53,6 +53,8 @@ begin
 		if ((relax = '0' and cntlast = "0100" and cntthird = "0110") or
 		    (relax = '1' and cntlast = "0001" and cntthird = "0101")) then
 			bell_tmp <= not bell_tmp;
+		else
+			bell_tmp <= '1';
 		end if;
 	end if;
 end process;
