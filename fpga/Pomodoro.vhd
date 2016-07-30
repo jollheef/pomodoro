@@ -38,6 +38,9 @@ architecture arch of Pomodoro is
 	signal relax : std_logic;
 	signal switch1, switch2, switch3 : std_logic;
 
+	signal silent : std_logic;
+	signal switch4, switch5, switch6 : std_logic;
+
 	signal bell_tmp : std_logic;
 begin
 	dataout <= dataout_xhdl1;
@@ -47,7 +50,7 @@ begin
 -- Alert if 4600+ for work and 1500+ for relax
 process (clk, rst, cntthird, cntlast)
 begin
-	if (rst = '0') then
+	if (rst = '0' or silent = '1') then
 		bell_tmp <= '1';
 	elsif rising_edge(clk) then
 		if ((relax = '0' and cntlast = "0100" and cntthird = "0110") or
@@ -65,10 +68,15 @@ begin
 		switch1 <= btn(0);
 		switch2 <= switch1;
 		switch3 <= switch2;
+
+		switch4 <= btn(7);
+		switch5 <= switch4;
+		switch6 <= switch5;
 	end if;
 end process;
 
 relax <= switch1 and switch2 and switch3;
+silent <= switch4 and switch5 and switch6;
 
 process (clk, rst)
 begin
