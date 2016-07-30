@@ -16,7 +16,8 @@ entity Pomodoro is
 		rst : in std_logic;
 		dataout : out std_logic_vector(7 downto 0);
 		en : out std_logic_vector(7 downto 0);
-		btn : in std_logic_vector(7 downto 0)
+		btn : in std_logic_vector(7 downto 0);
+		bell : out std_logic
 	);
 end Pomodoro;
 
@@ -36,9 +37,25 @@ architecture arch of Pomodoro is
 
 	signal relax : std_logic;
 	signal switch1, switch2, switch3 : std_logic;
+
+	signal bell_tmp : std_logic;
 begin
 	dataout <= dataout_xhdl1;
 	en <= en_xhdl;
+	bell <= bell_tmp;
+
+-- Alert if 4600+ for work and 1500+ for relax
+process (clk, rst, cntthird, cntlast)
+begin
+	if (rst = '0') then
+		bell_tmp <= '1';
+	elsif rising_edge(clk) then
+		if ((relax = '0' and cntlast = "0100" and cntthird = "0110") or
+		    (relax = '1' and cntlast = "0001" and cntthird = "0101")) then
+			bell_tmp <= not bell_tmp;
+		end if;
+	end if;
+end process;
 
 process(clk, btn)
 begin
