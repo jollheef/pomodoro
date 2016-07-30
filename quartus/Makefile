@@ -109,3 +109,6 @@ asm.chg:
 
 program: $(PROJECT).sof
 	quartus_pgm --no_banner -c $(CABLE) --mode=jtag -o "P;$(PROJECT).sof"
+
+jic: $(PROJECT).sof
+	quartus_cpf -c -s EP4CE6 -d EPCS16 $(PROJECT).sof $(PROJECT).jic
