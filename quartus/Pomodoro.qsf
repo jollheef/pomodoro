@@ -50,6 +50,7 @@ set_location_assignment PIN_70 -to led[10]
 set_location_assignment PIN_69 -to led[11]
 set_location_assignment PIN_87 -to rst
 set_location_assignment PIN_86 -to switch
+set_location_assignment PIN_141 -to bell
 set_global_assignment -name ENABLE_INIT_DONE_OUTPUT ON
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE ON
 set_global_assignment -name GENERATE_TTF_FILE ON
