@@ -46,6 +46,7 @@ all: smart.log $(PROJECT).asm.rpt $(PROJECT).sta.rpt
 
 clean:
 	rm -rf *.rpt *.chg smart.log *.htm *.eqn *.pin *.sof *.pof db incremental_db
+	git clean -dfx
 
 map: smart.log $(PROJECT).map.rpt
 fit: smart.log $(PROJECT).fit.rpt
