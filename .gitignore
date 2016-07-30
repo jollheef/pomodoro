@@ -1,0 +1,6 @@
+quartus/*
+quartus/db
+quartus/db/*
+!quartus/Makefile
+!quartus/Pomodoro.qpf
+!quartus/Pomodoro.qsf
