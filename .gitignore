@@ -4,3 +4,4 @@ quartus/db/*
 !quartus/Makefile
 !quartus/Pomodoro.qpf
 !quartus/Pomodoro.qsf
+!quartus/chain_epcs.cdf

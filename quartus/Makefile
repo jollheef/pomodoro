@@ -112,3 +112,6 @@ program: $(PROJECT).sof
 
 jic: $(PROJECT).sof
 	quartus_cpf -c -s EP4CE6 -d EPCS16 $(PROJECT).sof $(PROJECT).jic
+
+program_epcs: $(PROJECT).jic
+	quartus_pgm chain_epcs.cdf
