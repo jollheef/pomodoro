@@ -108,11 +108,11 @@ asm.chg:
 # Programming the device
 ###################################################################
 
-program: $(PROJECT).sof
+program: all
 	quartus_pgm --no_banner -c $(CABLE) --mode=jtag -o "P;$(PROJECT).sof"
 
-jic: $(PROJECT).sof
+jic: all
 	quartus_cpf -c -s EP4CE6 -d EPCS16 $(PROJECT).sof $(PROJECT).jic
 
-program_epcs: $(PROJECT).jic
+program_epcs: jic
 	quartus_pgm chain_epcs.cdf
