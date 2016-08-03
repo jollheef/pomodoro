@@ -102,6 +102,7 @@ begin
 		end if;
 	end if;
 end process;
+
 process (first_over, rst)
 begin
 	if (rst = '0') then
@@ -117,6 +118,7 @@ begin
 		end if;
 	end if;
 end process;
+
 process (second_over, rst)
 begin
 	if (rst = '0') then
@@ -148,7 +150,6 @@ begin
 		end if;
 	end if;
 end process;
-
 
 process (rst, clk, div_cnt(19 downto 18))
 begin
